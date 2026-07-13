@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Digital Marketing - Anjali Prajapati</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.iconify.design/3/3.1.0/iconify.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: '#FDFCF8',
+            savor: '#F3EFE0',
+          },
+          borderRadius: {
+            '4xl': '2rem',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #fafaf9; color: #1c1917; overflow-x: hidden; }
+    h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #fafaf9; }
+    ::-webkit-scrollbar-thumb { background: #a8a29e; border-radius: 4px; }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      filter: blur(8px);
+      transform: translateY(24px);
+      transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      filter: blur(0);
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 100ms; }
+    .reveal-delay-2 { transition-delay: 200ms; }
+    .reveal-delay-3 { transition-delay: 300ms; }
+    .reveal-delay-4 { transition-delay: 400ms; }
+    .reveal-delay-5 { transition-delay: 500ms; }
+    .reveal-delay-6 { transition-delay: 600ms; }
+    .reveal-delay-7 { transition-delay: 700ms; }
+
+    /* Hero Background */
+    .hero-bg {
+      background: linear-gradient(to bottom, rgba(28,25,23,0.65), rgba(28,25,23,0.3) 60%, #fafaf9);
+    }
+
+    /* Glass Card */
+    .glass-card {
+      background: rgba(28, 25, 23, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 500ms;
+    }
+    .glass-card:hover {
+      background: rgba(28, 25, 23, 0.6);
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    /* Light Card */
+    .light-card {
+      background: #ffffff;
+      border: 1px solid #e7e5e4;
+      transition: all 500ms;
+    }
+    .light-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 50px -12px rgba(0,0,0,0.12);
+      border-color: #1c1917;
+    }
+
+    /* Shine Effect */
+    .shine-effect {
+      position: relative;
+      overflow: hidden;
+    }
+    .shine-effect::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+      transform: translateX(-100%) skewX(-12deg);
+      transition: transform 1000ms ease-in-out;
+    }
+    .shine-effect:hover::after {
+      transform: translateX(100%) skewX(-12deg);
+    }
+
+    /* Pulse Dot */
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.5); opacity: 0.5; }
+    }
+    .pulse-dot { animation: pulse-dot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+    /* Float Animation */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    .float-anim { animation: float 4s ease-in-out infinite; }
+    .float-anim-delay { animation: float 4s ease-in-out 1s infinite; }
+    .float-anim-delay2 { animation: float 4s ease-in-out 2s infinite; }
+
+    /* Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, #1c1917, #57534e, #1c1917);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Nav Glass */
+    .nav-glass {
+      background: rgba(250, 250, 249, 0.85);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* Section Divider */
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(to right, transparent, #a8a29e, transparent);
+    }
+
+    /* Counter Animation */
+    .counter-box {
+      background: linear-gradient(135deg, #1c1917, #292524);
+    }
+
+    /* Accordion */
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .accordion-content.open {
+      max-height: 500px;
+    }
+    .accordion-icon {
+      transition: transform 300ms;
+    }
+    .accordion-icon.rotated {
+      transform: rotate(45deg);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .mobile-menu.open {
+      max-height: 400px;
+    }
+
+    /* Progress Bar */
+    .progress-fill {
+      width: 0;
+      transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .progress-fill.active {
+      width: var(--target-width);
+    }
+
+    /* Tooltip */
+    .tooltip-container:hover .tooltip-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .tooltip-text {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 300ms;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    /* Toast */
+    .toast {
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== NAVIGATION ========== -->
+  <nav class="nav-glass fixed top-0 left-0 right-0 z-50 h-20 flex items-center px-6">
+    <div class="max-w-screen-2xl mx-auto w-full flex items-center justify-between">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="w-10 h-10 bg-stone-900 rounded-xl flex items-center justify-center text-white font-bold text-lg font-serif group-hover:scale-110 transition-transform duration-300">D</div>
+        <div>
+          <span class="text-sm font-semibold tracking-wide text-stone-900">Digital Marketing</span>
+          <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-400">Project</span>
+        </div>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#about" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">About</a>
+        <a href="#types" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Types</a>
+        <a href="#strategies" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Strategies</a>
+        <a href="#tools" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Tools</a>
+        <a href="#benefits" class="text-sm font-medium text-stone-600 hover:text-stone-900 transition-colors">Benefits</a>
+        <a href="#contact" class="bg-stone-900 text-white text-sm font-bold uppercase tracking-wide px-6 py-3 rounded-full hover:scale-105 transition-transform duration-150 shine-effect">Contact</a>
+      </div>
+
+      <!-- Mobile Toggle -->
+      <button id="menuToggle" class="md:hidden w-10 h-10 flex flex-col items-center justify-center gap-1.5">
+        <span class="w-6 h-0.5 bg-stone-900 transition-all duration-300" id="bar1"></span>
+        <span class="w-6 h-0.5 bg-stone-900 transition-all duration-300" id="bar2"></span>
+        <span class="w-4 h-0.5 bg-stone-900 transition-all duration-300 ml-auto" id="bar3"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu absolute top-20 left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-stone-200" id="mobileMenu">
+      <div class="flex flex-col px-6 py-4 gap-4">
+        <a href="#about" class="text-sm font-medium text-stone-600 py-2" onclick="closeMobileMenu()">About</a>
+        <a href="#types" class="text-sm font-medium text-stone-600 py-2" onclick="closeMobileMenu()">Types</a>
+        <a href="#strategies" class="text-sm font-medium text-stone-600 py-2" onclick="closeMobileMenu()">Strategies</a>
+        <a href="#tools" class="text-sm font-medium text-stone-600 py-2" onclick="closeMobileMenu()">Tools</a>
+        <a href="#benefits" class="text-sm font-medium text-stone-600 py-2" onclick="closeMobileMenu()">Benefits</a>
+        <a href="#contact" class="bg-stone-900 text-white text-sm font-bold uppercase tracking-wide px-6 py-3 rounded-full text-center" onclick="closeMobileMenu()">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- ========== HERO SECTION ========== -->
+  <section id="hero" class="relative h-[90vh] flex items-center justify-center overflow-hidden rounded-b-[3rem]">
+    <!-- Background Image -->
+    <img src="https://picsum.photos/seed/digitalmarketing2024/1920/1080.jpg" alt="Digital Marketing" class="absolute inset-0 w-full h-full object-cover scale-105" style="animation: pulse 15s ease-in-out infinite;">
+    <div class="hero-bg absolute inset-0"></div>
+
+    <!-- Floating Elements -->
+    <div class="absolute top-32 left-10 w-16 h-16 border border-white/20 rounded-2xl float-anim hidden md:block"></div>
+    <div class="absolute top-48 right-16 w-10 h-10 bg-white/10 rounded-full float-anim-delay hidden md:block"></div>
+    <div class="absolute bottom-40 left-20 w-12 h-12 border border-white/15 rounded-xl float-anim-delay2 hidden md:block"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
+      <div class="reveal">
+        <span class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.3em] text-white/70 mb-6">
+          <span class="w-2 h-2 bg-green-400 rounded-full pulse-dot"></span>
+          Project Presentation
+        </span>
+      </div>
+
+      <h1 class="reveal reveal-delay-1 font-serif text-5xl md:text-8xl font-normal text-white leading-[0.85] tracking-tighter mb-6">
+        Digital<br>
+        <span class="italic text-savor">Marketing</span>
+      </h1>
+
+      <p class="reveal reveal-delay-2 text-lg md:text-xl font-light text-white/70 max-w-2xl mx-auto mb-4 leading-relaxed">
+        डिजिटल मार्केटिंग की दुनिया को समझें — इसके प्रकार, रणनीतियाँ, टूल्स और लाभ।
+      </p>
+
+      <p class="reveal reveal-delay-3 text-sm text-white/50 mb-10">
+        <span class="font-semibold text-white/70">Anjali Prajapati</span> &nbsp;•&nbsp; Reg No: 1965050
+      </p>
+
+      <div class="reveal reveal-delay-4 flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#about" class="bg-white text-stone-900 text-sm font-bold uppercase tracking-wide px-8 py-4 rounded-full hover:scale-105 transition-transform duration-150 shine-effect inline-flex items-center gap-2">
+          Explore Now
+          <span class="iconify" data-icon="lucide:arrow-down" data-width="16"></span>
+        </a>
+        <a href="#contact" class="border border-white/30 text-white text-sm font-bold uppercase tracking-wide px-8 py-4 rounded-full hover:bg-white/10 transition-all duration-300 inline-flex items-center gap-2">
+          <span class="iconify" data-icon="lucide:mail" data-width="16"></span>
+          Get in Touch
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll Indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+      <span class="text-[10px] uppercase tracking-[0.3em] text-stone-400">Scroll</span>
+      <div class="w-px h-10 bg-gradient-to-b from-stone-400 to-transparent"></div>
+    </div>
+  </section>
+
+
+  <!-- ========== STUDENT INFO BAR ========== -->
+  <section class="py-8 px-6">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="reveal flex flex-wrap justify-center gap-8 md:gap-16 items-center">
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center">
+            <span class="iconify text-stone-600" data-icon="lucide:user" data-width="22"></span>
+          </div>
+          <div>
+            <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-400">Student Name</span>
+            <span class="text-sm font-semibold text-stone-900">Anjali Prajapati</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center">
+            <span class="iconify text-stone-600" data-icon="lucide:hash" data-width="22"></span>
+          </div>
+          <div>
+            <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-400">Reg. No.</span>
+            <span class="text-sm font-semibold text-stone-900">1965050</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center">
+            <span class="iconify text-stone-600" data-icon="lucide:book-open" data-width="22"></span>
+          </div>
+          <div>
+            <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-400">Project</span>
+            <span class="text-sm font-semibold text-stone-900">Digital Marketing</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-3">
+          <div class="w-12 h-12 bg-stone-100 rounded-2xl flex items-center justify-center">
+            <span class="iconify text-stone-600" data-icon="lucide:mail" data-width="22"></span>
+          </div>
+          <div>
+            <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-400">Email</span>
+            <span class="text-sm font-semibold text-stone-900 break-all">anjaliprajapati13220@gmail.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider max-w-screen-xl mx-auto"></div>
+
+
+  <!-- ========== WHAT IS DIGITAL MARKETING ========== -->
+  <section id="about" class="py-32 px-6">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="flex flex-col lg:flex-row items-center gap-20">
+        <!-- Text -->
+        <div class="lg:w-2/5">
+          <span class="reveal text-xs font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Introduction</span>
+          <h2 class="reveal reveal-delay-1 font-serif text-5xl md:text-6xl font-normal leading-[0.85] tracking-tighter text-stone-900 mb-8">
+            What is<br><span class="italic">Digital</span><br>Marketing?
+          </h2>
+          <div class="reveal reveal-delay-2 space-y-5 text-lg font-light text-stone-600 leading-relaxed">
+            <p>
+              <strong class="font-medium text-stone-900">डिजिटल मार्केटिंग</strong> वह प्रक्रिया है जिसमें इंटरनेट और डिजिटल तकनीकों का उपयोग करके किसी उत्पाद या सेवा को ग्राहकों तक पहुंचाया जाता है।
+            </p>
+            <p>
+              इसमें <strong class="font-medium text-stone-900">SEO, Social Media, Email Marketing, Content Marketing, PPC Advertising</strong> आदि शामिल हैं। यह पारंपरिक मार्केटिंग से कहीं अधिक <strong class="font-medium text-stone-900">प्रभावी, मापनीय और किफायती</strong> है।
+            </p>
+            <p>
+              2024 में दुनिया भर में <strong class="font-medium text-stone-900">500+ करोड़</strong> इंटरनेट उपयोगकर्ता हैं, जो डिजिटल मार्केटिंग को आज की सबसे शक्तिशाली मार्केटिंग रणनीति बनाता है।
+            </p>
+          </div>
+        </div>
+
+        <!-- Image -->
+        <div class="lg:w-3/5 relative">
+          <div class="reveal reveal-delay-3 relative rounded-2xl overflow-hidden aspect-[4/3]">
+            <img src="https://picsum.photos/seed/whatisdm2024/800/600.jpg" alt="Digital Marketing Concept" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+            <div class="absolute inset-0 bg-gradient-to-t from-stone-900/40 to-transparent"></div>
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="glass-card rounded-xl p-4 flex items-center gap-4">
+                <div class="w-12 h-12 bg-green-500/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <span class="iconify text-green-400" data-icon="lucide:trending-up" data-width="24"></span>
+                </div>
+                <div>
+                  <span class="text-white text-sm font-semibold">Digital Marketing Industry</span>
+                  <span class="block text-white/60 text-xs">$786.2 Billion by 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Floating Badge -->
+          <div class="reveal reveal-delay-4 absolute -top-6 -right-4 md:-right-8 bg-stone-900 text-white rounded-2xl p-5 float-anim shadow-2xl">
+            <span class="block text-3xl font-serif font-semibold">5B+</span>
+            <span class="text-xs text-stone-400">Internet Users</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== STATS COUNTER ========== -->
+  <section class="py-20 px-6">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div class="reveal counter-box rounded-2xl p-8 text-center">
+          <span class="block text-4xl md:text-5xl font-serif text-white mb-2" data-count="500">0</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-stone-400">करोड़+ Users</span>
+        </div>
+        <div class="reveal reveal-delay-1 counter-box rounded-2xl p-8 text-center">
+          <span class="block text-4xl md:text-5xl font-serif text-white mb-2" data-count="72">0</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-stone-400">% Budget Digital</span>
+        </div>
+        <div class="reveal reveal-delay-2 counter-box rounded-2xl p-8 text-center">
+          <span class="block text-4xl md:text-5xl font-serif text-white mb-2" data-count="8">0</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-stone-400">Main Types</span>
+        </div>
+        <div class="reveal reveal-delay-3 counter-box rounded-2xl p-8 text-center">
+          <span class="block text-4xl md:text-5xl font-serif text-white mb-2" data-count="30">0</span>
+          <span class="text-xs uppercase tracking-[0.2em] text-stone-400">%+ ROI Average</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== TYPES OF DIGITAL MARKETING ========== -->
+  <section id="types" class="py-32 px-6 bg-savor/50 rounded-t-[3rem]">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="text-center mb-20">
+        <span class="reveal text-xs font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Categories</span>
+        <h2 class="reveal reveal-delay-1 font-serif text-5xl md:text-7xl font-normal leading-[0.85] tracking-tighter text-stone-900 mb-6">
+          Types of <span class="italic">Digital</span> Marketing
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg font-light text-stone-500 max-w-2xl mx-auto">
+          डिजिटल मार्केटिंग के 8 मुख्य प्रकार हैं जो हर बिज़नेस को ग्रो करने में मदद करते हैं
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-6 gap-y-8">
+
+        <!-- Card 1: SEO -->
+        <div class="reveal light-card rounded-3xl p-3 group">
+          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
+            <img src="https://picsum.photos/seed/seomarketing/600/450.jpg" alt="SEO" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/90 backdrop-blur-sm text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">01</span>
+            </div>
+          </div>
+          <div class="px-3 pb-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="iconify text-orange-500" data-icon="lucide:search" data-width="20"></span>
+              <h3 class="font-serif text-xl font-medium text-stone-900">SEO</h3>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed">
+              Search Engine Optimization — वेबसाइट को Google पर रैंक कराने की तकनीक। Organic traffic बढ़ाने के लिए On-page, Off-page और Technical SEO का उपयोग।
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 2: SEM / PPC -->
+        <div class="reveal reveal-delay-1 light-card rounded-3xl p-3 group">
+          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
+            <img src="https://picsum.photos/seed/ppcadvertising/600/450.jpg" alt="PPC" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/90 backdrop-blur-sm text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">02</span>
+            </div>
+          </div>
+          <div class="px-3 pb-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="iconify text-blue-500" data-icon="lucide:mouse-pointer-click" data-width="20"></span>
+              <h3 class="font-serif text-xl font-medium text-stone-900">SEM / PPC</h3>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed">
+              Search Engine Marketing / Pay-Per-Click — Google Ads के जरिए paid ads चलाना। हर क्लिक पर पैसे देने होते हैं, लेकिन तुरंत results मिलते हैं।
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 3: Social Media Marketing -->
+        <div class="reveal reveal-delay-2 light-card rounded-3xl p-3 group">
+          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
+            <img src="https://picsum.photos/seed/socialmediamarketing/600/450.jpg" alt="SMM" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/90 backdrop-blur-sm text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">03</span>
+            </div>
+          </div>
+          <div class="px-3 pb-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="iconify text-pink-500" data-icon="lucide:share-2" data-width="20"></span>
+              <h3 class="font-serif text-xl font-medium text-stone-900">Social Media Marketing</h3>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed">
+              Facebook, Instagram, LinkedIn, Twitter पर brand को promote करना। Content creation, engagement और paid social ads के जरिए audience बनाना।
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 4: Content Marketing -->
+        <div class="reveal reveal-delay-3 light-card rounded-3xl p-3 group">
+          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
+            <img src="https://picsum.photos/seed/contentwriting/600/450.jpg" alt="Content Marketing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/90 backdrop-blur-sm text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">04</span>
+            </div>
+          </div>
+          <div class="px-3 pb-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="iconify text-green-500" data-icon="lucide:file-text" data-width="20"></span>
+              <h3 class="font-serif text-xl font-medium text-stone-900">Content Marketing</h3>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed">
+              ब्लॉग, वीडियो, infographic, podcast जैसी valuable content बनाना। Audience को educate और engage करके trust बनाना और conversions बढ़ाना।
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 5: Email Marketing -->
+        <div class="reveal light-card rounded-3xl p-3 group">
+          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
+            <img src="https://picsum.photos/seed/emailmarketing2024/600/450.jpg" alt="Email Marketing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/90 backdrop-blur-sm text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">05</span>
+            </div>
+          </div>
+          <div class="px-3 pb-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="iconify text-yellow-500" data-icon="lucide:mail" data-width="20"></span>
+              <h3 class="font-serif text-xl font-medium text-stone-900">Email Marketing</h3>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed">
+              Email के जरिए customers तक directly पहुंचना। Newsletters, promotional emails, और automated email sequences से sales बढ़ाना।
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 6: Affiliate Marketing -->
+        <div class="reveal reveal-delay-1 light-card rounded-3xl p-3 group">
+          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
+            <img src="https://picsum.photos/seed/affiliatemarketing/600/450.jpg" alt="Affiliate Marketing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/90 backdrop-blur-sm text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">06</span>
+            </div>
+          </div>
+          <div class="px-3 pb-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="iconify text-purple-500" data-icon="lucide:handshake" data-width="20"></span>
+              <h3 class="font-serif text-xl font-medium text-stone-900">Affiliate Marketing</h3>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed">
+              दूसरों के products promote करके commission कमाना। Amazon Associates, ShareASale जैसे platform पर affiliate links share करके earning।
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 7: Influencer Marketing -->
+        <div class="reveal reveal-delay-2 light-card rounded-3xl p-3 group">
+          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
+            <img src="https://picsum.photos/seed/influencermarketing/600/450.jpg" alt="Influencer Marketing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/90 backdrop-blur-sm text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">07</span>
+            </div>
+          </div>
+          <div class="px-3 pb-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="iconify text-red-500" data-icon="lucide:star" data-width="20"></span>
+              <h3 class="font-serif text-xl font-medium text-stone-900">Influencer Marketing</h3>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed">
+              Popular social media influencers के जरिए brand promote करना। Micro और Macro influencers की मदद से target audience तक पहुंचना।
+            </p>
+          </div>
+        </div>
+
+        <!-- Card 8: Mobile Marketing -->
+        <div class="reveal reveal-delay-3 light-card rounded-3xl p-3 group">
+          <div class="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
+            <img src="https://picsum.photos/seed/mobilemarketing2024/600/450.jpg" alt="Mobile Marketing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+            <div class="absolute top-4 left-4">
+              <span class="bg-white/90 backdrop-blur-sm text-stone-900 text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">08</span>
+            </div>
+          </div>
+          <div class="px-3 pb-4">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="iconify text-cyan-500" data-icon="lucide:smartphone" data-width="20"></span>
+              <h3 class="font-serif text-xl font-medium text-stone-900">Mobile Marketing</h3>
+            </div>
+            <p class="text-sm text-stone-500 leading-relaxed">
+              SMS, push notifications, in-app ads, और mobile-optimized content के जरिए smartphone users को target करना। आज 60%+ traffic mobile से आता है।
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== DIGITAL MARKETING FUNNEL ========== -->
+  <section class="py-32 px-6 bg-savor/50">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="text-center mb-20">
+        <span class="reveal text-xs font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Process</span>
+        <h2 class="reveal reveal-delay-1 font-serif text-5xl md:text-7xl font-normal leading-[0.85] tracking-tighter text-stone-900 mb-6">
+          Marketing <span class="italic">Funnel</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg font-light text-stone-500 max-w-2xl mx-auto">
+          डिजिटल मार्केटिंग फ़नल — ग्राहक की यात्रा जानना बहुत ज़रूरी है
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div class="reveal text-center">
+          <div class="w-20 h-20 mx-auto bg-red-50 border-2 border-red-200 rounded-3xl flex items-center justify-center mb-4 hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-red-500" data-icon="lucide:eye" data-width="32"></span>
+          </div>
+          <h3 class="font-serif text-xl font-medium text-stone-900 mb-2">Awareness</h3>
+          <p class="text-sm text-stone-500">लोगों को आपके brand के बारे में पता चलना — SEO, Social Media, Ads</p>
+          <div class="mt-4 bg-stone-200 rounded-full h-2">
+            <div class="progress-fill bg-red-500 h-2 rounded-full" style="--target-width: 100%"></div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1 text-center">
+          <div class="w-20 h-20 mx-auto bg-orange-50 border-2 border-orange-200 rounded-3xl flex items-center justify-center mb-4 hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-orange-500" data-icon="lucide:heart" data-width="32"></span>
+          </div>
+          <h3 class="font-serif text-xl font-medium text-stone-900 mb-2">Interest</h3>
+          <p class="text-sm text-stone-500">लोग आपके content में interest लेते हैं — Blog, Video, Social Posts</p>
+          <div class="mt-4 bg-stone-200 rounded-full h-2">
+            <div class="progress-fill bg-orange-500 h-2 rounded-full" style="--target-width: 75%"></div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2 text-center">
+          <div class="w-20 h-20 mx-auto bg-yellow-50 border-2 border-yellow-200 rounded-3xl flex items-center justify-center mb-4 hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-yellow-500" data-icon="lucide:shopping-cart" data-width="32"></span>
+          </div>
+          <h3 class="font-serif text-xl font-medium text-stone-900 mb-2">Desire</h3>
+          <p class="text-sm text-stone-500">खरीदारी की इच्छा बनना — Reviews, Case Studies, Offers</p>
+          <div class="mt-4 bg-stone-200 rounded-full h-2">
+            <div class="progress-fill bg-yellow-500 h-2 rounded-full" style="--target-width: 45%"></div>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-3 text-center">
+          <div class="w-20 h-20 mx-auto bg-green-50 border-2 border-green-200 rounded-3xl flex items-center justify-center mb-4 hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-green-500" data-icon="lucide:check-circle" data-width="32"></span>
+          </div>
+          <h3 class="font-serif text-xl font-medium text-stone-900 mb-2">Action</h3>
+          <p class="text-sm text-stone-500">अंततः खरीदारी करना — CTA, Landing Page, Easy Checkout</p>
+          <div class="mt-4 bg-stone-200 rounded-full h-2">
+            <div class="progress-fill bg-green-500 h-2 rounded-full" style="--target-width: 25%"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== STRATEGIES SECTION ========== -->
+  <section id="strategies" class="py-32 px-6 rounded-t-[3rem] bg-stone-900 relative overflow-hidden">
+    <!-- Background Pattern -->
+    <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+    <div class="max-w-screen-xl mx-auto relative z-10">
+      <div class="text-center mb-20">
+        <span class="reveal text-xs font-bold uppercase tracking-[0.3em] text-stone-500 mb-4 block">Key Strategies</span>
+        <h2 class="reveal reveal-delay-1 font-serif text-5xl md:text-7xl font-normal leading-[0.85] tracking-tighter text-white mb-6">
+          Effective <span class="italic text-savor">Strategies</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg font-light text-stone-400 max-w-2xl mx-auto">
+          सफल डिजिटल मार्केटिंग के लिए ये रणनीतियाँ अपनाएं
+        </p>
+      </div>
+
+      <!-- Accordion -->
+      <div class="max-w-3xl mx-auto space-y-4">
+        <!-- Strategy 1 -->
+        <div class="reveal glass-card rounded-2xl overflow-hidden">
+          <button class="accordion-btn w-full flex items-center justify-between p-6 text-left" onclick="toggleAccordion(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-savor/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="iconify text-savor" data-icon="lucide:target" data-width="20"></span>
+              </div>
+              <span class="text-white font-medium text-lg">Target Audience Identify करें</span>
+            </div>
+            <span class="iconify accordion-icon text-savor" data-icon="lucide:plus" data-width="24"></span>
+          </button>
+          <div class="accordion-content px-6 pb-0">
+            <div class="pb-6 pl-14 text-stone-400 leading-relaxed">
+              अपने ideal customer की age, gender, location, interests और pain points को समझें। Buyer Persona बनाएं और उनकी needs के अनुसार content तैयार करें। Google Analytics और Social Media Insights से audience data लें।
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategy 2 -->
+        <div class="reveal reveal-delay-1 glass-card rounded-2xl overflow-hidden">
+          <button class="accordion-btn w-full flex items-center justify-between p-6 text-left" onclick="toggleAccordion(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-savor/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="iconify text-savor" data-icon="lucide:pen-tool" data-width="20"></span>
+              </div>
+              <span class="text-white font-medium text-lg">Quality Content बनाएं</span>
+            </div>
+            <span class="iconify accordion-icon text-savor" data-icon="lucide:plus" data-width="24"></span>
+          </button>
+          <div class="accordion-content px-6 pb-0">
+            <div class="pb-6 pl-14 text-stone-400 leading-relaxed">
+              "Content is King" — यह rule हमेशा कायम रहेगा। SEO-optimized blog posts, engaging videos, informative infographics और podcasts बनाएं। Consistency बनाए रखें — हफ्ते में कम से कम 3-4 content post करें।
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategy 3 -->
+        <div class="reveal reveal-delay-2 glass-card rounded-2xl overflow-hidden">
+          <button class="accordion-btn w-full flex items-center justify-between p-6 text-left" onclick="toggleAccordion(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-savor/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="iconify text-savor" data-icon="lucide:bar-chart-3" data-width="20"></span>
+              </div>
+              <span class="text-white font-medium text-lg">SEO Optimize करें</span>
+            </div>
+            <span class="iconify accordion-icon text-savor" data-icon="lucide:plus" data-width="24"></span>
+          </button>
+          <div class="accordion-content px-6 pb-0">
+            <div class="pb-6 pl-14 text-stone-400 leading-relaxed">
+              Keyword research करें (Ahrefs, SEMrush), On-page SEO (title, meta description, headings, image alt), Technical SEO (site speed, mobile-friendly, schema markup), और Off-page SEO (backlinks, guest posting) पर ध्यान दें।
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategy 4 -->
+        <div class="reveal reveal-delay-3 glass-card rounded-2xl overflow-hidden">
+          <button class="accordion-btn w-full flex items-center justify-between p-6 text-left" onclick="toggleAccordion(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-savor/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="iconify text-savor" data-icon="lucide:line-chart" data-width="20"></span>
+              </div>
+              <span class="text-white font-medium text-lg">Data Analytics का उपयोग</span>
+            </div>
+            <span class="iconify accordion-icon text-savor" data-icon="lucide:plus" data-width="24"></span>
+          </button>
+          <div class="accordion-content px-6 pb-0">
+            <div class="pb-6 pl-14 text-stone-400 leading-relaxed">
+              Google Analytics 4, Search Console, और Social Media Analytics से data collect करें। CTR, Bounce Rate, Conversion Rate, ROI जैसे metrics track करें। Data के आधार पर strategy में improvements करें।
+            </div>
+          </div>
+        </div>
+
+        <!-- Strategy 5 -->
+        <div class="reveal reveal-delay-4 glass-card rounded-2xl overflow-hidden">
+          <button class="accordion-btn w-full flex items-center justify-between p-6 text-left" onclick="toggleAccordion(this)">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 bg-savor/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                <span class="iconify text-savor" data-icon="lucide:repeat" data-width="20"></span>
+              </div>
+              <span class="text-white font-medium text-lg">Retargeting & Remarketing</span>
+            </div>
+            <span class="iconify accordion-icon text-savor" data-icon="lucide:plus" data-width="24"></span>
+          </button>
+          <div class="accordion-content px-6 pb-0">
+            <div class="pb-6 pl-14 text-stone-400 leading-relaxed">
+              जो लोग आपकी वेबसाइट पर आए लेकिन खरीदारी नहीं की, उन्हें Facebook Pixel, Google Remarketing से वापस लाएं। Custom ads दिखाकर conversion rate 3-5 गुना बढ़ाएं।
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== TOOLS SECTION ========== -->
+  <section id="tools" class="py-32 px-6">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="text-center mb-20">
+        <span class="reveal text-xs font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Essential Tools</span>
+        <h2 class="reveal reveal-delay-1 font-serif text-5xl md:text-7xl font-normal leading-[0.85] tracking-tighter text-stone-900 mb-6">
+          Digital Marketing <span class="italic">Tools</span>
+        </h2>
+        <p class="reveal reveal-delay-2 text-lg font-light text-stone-500 max-w-2xl mx-auto">
+          ये टूल्स हर डिजिटल मार्केटर के लिए ज़रूरी हैं
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Tool Cards -->
+        <div class="reveal light-card rounded-2xl p-6 flex items-start gap-4 group tooltip-container relative">
+          <div class="w-14 h-14 bg-blue-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-blue-600" data-icon="lucide:search" data-width="26"></span>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-medium text-stone-900 mb-1">Google Analytics</h3>
+            <p class="text-sm text-stone-500 leading-relaxed">वेबसाइट traffic, user behavior, और conversions track करने का सबसे powerful free tool।</p>
+            <span class="inline-block mt-2 text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2 py-1 rounded-full">Free</span>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1 light-card rounded-2xl p-6 flex items-start gap-4 group">
+          <div class="w-14 h-14 bg-orange-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-orange-600" data-icon="lucide:flame" data-width="26"></span>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-medium text-stone-900 mb-1">SEMrush</h3>
+            <p class="text-sm text-stone-500 leading-relaxed">Keyword research, competitor analysis, और SEO audit के लिए all-in-one tool।</p>
+            <span class="inline-block mt-2 text-[10px] font-bold uppercase tracking-wider text-orange-600 bg-orange-50 px-2 py-1 rounded-full">Paid</span>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2 light-card rounded-2xl p-6 flex items-start gap-4 group">
+          <div class="w-14 h-14 bg-pink-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-pink-600" data-icon="lucide:at-sign" data-width="26"></span>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-medium text-stone-900 mb-1">Hootsuite</h3>
+            <p class="text-sm text-stone-500 leading-relaxed">सभी social media accounts को एक जगह से manage और schedule करें।</p>
+            <span class="inline-block mt-2 text-[10px] font-bold uppercase tracking-wider text-pink-600 bg-pink-50 px-2 py-1 rounded-full">Freemium</span>
+          </div>
+        </div>
+
+        <div class="reveal light-card rounded-2xl p-6 flex items-start gap-4 group">
+          <div class="w-14 h-14 bg-green-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-green-600" data-icon="lucide:mail" data-width="26"></span>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-medium text-stone-900 mb-1">Mailchimp</h3>
+            <p class="text-sm text-stone-500 leading-relaxed">Email marketing campaigns बनाने, automate करने और subscriber list manage करें।</p>
+            <span class="inline-block mt-2 text-[10px] font-bold uppercase tracking-wider text-green-600 bg-green-50 px-2 py-1 rounded-full">Freemium</span>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-1 light-card rounded-2xl p-6 flex items-start gap-4 group">
+          <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-purple-600" data-icon="lucide:palette" data-width="26"></span>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-medium text-stone-900 mb-1">Canva</h3>
+            <p class="text-sm text-stone-500 leading-relaxed">बिना designing knowledge के professional graphics, posts और stories बनाएं।</p>
+            <span class="inline-block mt-2 text-[10px] font-bold uppercase tracking-wider text-purple-600 bg-purple-50 px-2 py-1 rounded-full">Freemium</span>
+          </div>
+        </div>
+
+        <div class="reveal reveal-delay-2 light-card rounded-2xl p-6 flex items-start gap-4 group">
+          <div class="w-14 h-14 bg-red-50 rounded-2xl flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform duration-300">
+            <span class="iconify text-red-600" data-icon="lucide:zap" data-width="26"></span>
+          </div>
+          <div>
+            <h3 class="font-serif text-lg font-medium text-stone-900 mb-1">Google Ads</h3>
+            <p class="text-sm text-stone-500 leading-relaxed">Search, Display, YouTube और Shopping ads चलाकर instant traffic और leads पाएं।</p>
+            <span class="inline-block mt-2 text-[10px] font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-1 rounded-full">Pay-per-click</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== BENEFITS SECTION ========== -->
+  <section id="benefits" class="py-32 px-6 bg-savor/50 rounded-t-[3rem]">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="flex flex-col lg:flex-row items-center gap-20">
+        <!-- Image Grid -->
+        <div class="lg:w-2/5 grid grid-cols-2 gap-4">
+          <div class="reveal rounded-2xl overflow-hidden aspect-[3/4]">
+            <img src="https://picsum.photos/seed/benefit1dm/400/530.jpg" alt="Benefit" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+          </div>
+          <div class="reveal reveal-delay-1 rounded-2xl overflow-hidden aspect-[3/4] mt-8">
+            <img src="https://picsum.photos/seed/benefit2dm/400/530.jpg" alt="Benefit" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700">
+          </div>
+        </div>
+
+        <!-- Benefits List -->
+        <div class="lg:w-3/5">
+          <span class="reveal text-xs font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Why It Matters</span>
+          <h2 class="reveal reveal-delay-1 font-serif text-5xl md:text-6xl font-normal leading-[0.85] tracking-tighter text-stone-900 mb-10">
+            Benefits of <span class="italic">Digital</span> Marketing
+          </h2>
+
+          <div class="space-y-6">
+            <div class="reveal reveal-delay-2 flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-100 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="iconify text-green-600" data-icon="lucide:globe" data-width="22"></span>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-stone-900 mb-1">Global Reach</h3>
+                <p class="text-sm text-stone-500 leading-relaxed">पूरी दुनिया में अपने products को promote करें। भौगोलिक सीमाओं से परे जाएं और अंतरराष्ट्रीय बाज़ार तक पहुंचें।</p>
+              </div>
+            </div>
+
+            <div class="reveal reveal-delay-3 flex items-start gap-4">
+              <div class="w-12 h-12 bg-blue-100 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="iconify text-blue-600" data-icon="lucide:indian-rupee" data-width="22"></span>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-stone-900 mb-1">Cost Effective</h3>
+                <p class="text-sm text-stone-500 leading-relaxed">ट्रेडिशनल मार्केटिंग से 60% कम खर्च में बेहतर results। छोटे बिज़नेस भी आसानी से शुरू कर सकते हैं।</p>
+              </div>
+            </div>
+
+            <div class="reveal reveal-delay-4 flex items-start gap-4">
+              <div class="w-12 h-12 bg-purple-100 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="iconify text-purple-600" data-icon="lucide:bar-chart" data-width="22"></span>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-stone-900 mb-1">Measurable Results</h3>
+                <p class="text-sm text-stone-500 leading-relaxed">हर campaign का real-time data देखें — कितने लोगों ने देखा, क्लिक किया, खरीदा। Data-driven decisions लें।</p>
+              </div>
+            </div>
+
+            <div class="reveal reveal-delay-5 flex items-start gap-4">
+              <div class="w-12 h-12 bg-orange-100 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="iconify text-orange-600" data-icon="lucide:users" data-width="22"></span>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-stone-900 mb-1">Targeted Audience</h3>
+                <p class="text-sm text-stone-500 leading-relaxed">Age, location, interest, behavior के हिसाब से exact audience को target करें। बेकार reach नहीं, सिर्फ relevant audience।</p>
+              </div>
+            </div>
+
+            <div class="reveal reveal-delay-6 flex items-start gap-4">
+              <div class="w-12 h-12 bg-red-100 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="iconify text-red-600" data-icon="lucide:clock" data-width="22"></span>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-stone-900 mb-1">24/7 Availability</h3>
+                <p class="text-sm text-stone-500 leading-relaxed">आपकी वेबसाइट और ads दिन-रात काम करते हैं। Time zone कोई मायने नहीं रखता — कभी भी, कहीं भी।</p>
+              </div>
+            </div>
+
+            <div class="reveal reveal-delay-7 flex items-start gap-4">
+              <div class="w-12 h-12 bg-yellow-100 rounded-2xl flex items-center justify-center flex-shrink-0 mt-1">
+                <span class="iconify text-yellow-600" data-icon="lucide:refresh-cw" data-width="22"></span>
+              </div>
+              <div>
+                <h3 class="font-serif text-xl font-medium text-stone-900 mb-1">Easy to Adjust</h3>
+                <p class="text-sm text-stone-500 leading-relaxed">Campaign चलाते समय ही changes कर सकते हैं। कोई ad काम नहीं कर रही? तुरंत pause या modify करें।</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== TRADITIONAL VS DIGITAL ========== -->
+  <section class="py-32 px-6 bg-savor/50">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="text-center mb-20">
+        <span class="reveal text-xs font-bold uppercase tracking-[0.3em] text-stone-400 mb-4 block">Comparison</span>
+        <h2 class="reveal reveal-delay-1 font-serif text-5xl md:text-7xl font-normal leading-[0.85] tracking-tighter text-stone-900 mb-6">
+          Traditional vs <span class="italic">Digital</span>
+        </h2>
+      </div>
+
+      <div class="reveal reveal-delay-2 max-w-4xl mx-auto overflow-hidden rounded-2xl border border-stone-200">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-stone-900 text-white">
+              <th class="text-left p-5 font-medium">Feature</th>
+              <th class="text-center p-5 font-medium">Traditional</th>
+              <th class="text-center p-5 font-medium">Digital</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-stone-100">
+            <tr class="hover:bg-stone-50 transition-colors">
+              <td class="p-5 font-medium text-stone-900">Reach</td>
+              <td class="p-5 text-center text-stone-500">Local / Limited</td>
+              <td class="p-5 text-center text-green-600 font-medium">Global</td>
+            </tr>
+            <tr class="hover:bg-stone-50 transition-colors">
+              <td class="p-5 font-medium text-stone-900">Cost</td>
+              <td class="p-5 text-center text-red-500 font-medium">Very High</td>
+              <td class="p-5 text-center text-green-600 font-medium">Low / Flexible</td>
+            </tr>
+            <tr class="hover:bg-stone-50 transition-colors">
+              <td class="p-5 font-medium text-stone-900">Targeting</td>
+              <td class="p-5 text-center text-stone-500">Broad / General</td>
+              <td class="p-5 text-center text-green-600 font-medium">Precise / Custom</td>
+            </tr>
+            <tr class="hover:bg-stone-50 transition-colors">
+              <td class="p-5 font-medium text-stone-900">Analytics</td>
+              <td class="p-5 text-center text-red-500 font-medium">Difficult</td>
+              <td class="p-5 text-center text-green-600 font-medium">Real-time</td>
+            </tr>
+            <tr class="hover:bg-stone-50 transition-colors">
+              <td class="p-5 font-medium text-stone-900">Engagement</td>
+              <td class="p-5 text-center text-stone-500">One-way</td>
+              <td class="p-5 text-center text-green-600 font-medium">Two-way</td>
+            </tr>
+            <tr class="hover:bg-stone-50 transition-colors">
+              <td class="p-5 font-medium text-stone-900">Speed</td>
+              <td class="p-5 text-center text-stone-500">Slow</td>
+              <td class="p-5 text-center text-green-600 font-medium">Instant</td>
+            </tr>
+            <tr class="hover:bg-stone-50 transition-colors">
+              <td class="p-5 font-medium text-stone-900">ROI Tracking</td>
+              <td class="p-5 text-center text-red-500 font-medium">Almost Impossible</td>
+              <td class="p-5 text-center text-green-600 font-medium">100% Accurate</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== CONTACT SECTION ========== -->
+  <section id="contact" class="py-32 px-6 rounded-t-[3rem] bg-stone-900 relative overflow-hidden">
+    <div class="absolute inset-0 opacity-5" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fill-rule=\'evenodd\'%3E%3Cg fill=\'%23ffffff\' fill-opacity=\'1\'%3E%3Cpath d=\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
+
+    <div class="max-w-screen-xl mx-auto relative z-10">
+      <div class="flex flex-col lg:flex-row gap-20">
+        <!-- Left -->
+        <div class="lg:w-2/5">
+          <span class="reveal text-xs font-bold uppercase tracking-[0.3em] text-stone-500 mb-4 block">Get in Touch</span>
+          <h2 class="reveal reveal-delay-1 font-serif text-5xl md:text-6xl font-normal leading-[0.85] tracking-tighter text-white mb-8">
+            Let's <span class="italic text-savor">Connect</span>
+          </h2>
+          <p class="reveal reveal-delay-2 text-lg font-light text-stone-400 leading-relaxed mb-10">
+            अगर आपके मन में डिजिटल मार्केटिंग से जुड़ा कोई सवाल है या project के बारे में कुछ पूछना हो, तो मुझसे संपर्क करें।
+          </p>
+
+          <div class="reveal reveal-delay-3 space-y-6">
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span class="iconify text-savor" data-icon="lucide:user" data-width="22"></span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-500">Student Name</span>
+                <span class="text-white font-medium">Anjali Prajapati</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span class="iconify text-savor" data-icon="lucide:hash" data-width="22"></span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-500">Registration No.</span>
+                <span class="text-white font-medium">1965050</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span class="iconify text-savor" data-icon="lucide:book-open" data-width="22"></span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-500">Project Topic</span>
+                <span class="text-white font-medium">Digital Marketing</span>
+              </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+              <div class="w-14 h-14 bg-white/5 border border-white/10 rounded-2xl flex items-center justify-center flex-shrink-0">
+                <span class="iconify text-savor" data-icon="lucide:mail" data-width="22"></span>
+              </div>
+              <div>
+                <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-500">Email Address</span>
+                <a href="mailto:anjaliprajapati13220@gmail.com" class="text-savor font-medium hover:underline break-all">anjaliprajapati13220@gmail.com</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right - Contact Form -->
+        <div class="lg:w-3/5">
+          <div class="reveal reveal-delay-2 glass-card rounded-3xl p-8 md:p-10">
+            <h3 class="font-serif text-2xl text-white mb-8">Send a Message</h3>
+            <form id="contactForm" class="space-y-5" onsubmit="handleSubmit(event)">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label class="block text-[10px] uppercase tracking-[0.2em] text-stone-400 mb-2">Your Name</label>
+                  <input type="text" required placeholder="अपना नाम लिखें" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-stone-600 text-sm focus:outline-none focus:border-savor/50 transition-colors">
+                </div>
+                <div>
+                  <label class="block text-[10px] uppercase tracking-[0.2em] text-stone-400 mb-2">Your Email</label>
+                  <input type="email" required placeholder="your@email.com" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-stone-600 text-sm focus:outline-none focus:border-savor/50 transition-colors">
+                </div>
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-[0.2em] text-stone-400 mb-2">Subject</label>
+                <input type="text" required placeholder="विषय लिखें" class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-stone-600 text-sm focus:outline-none focus:border-savor/50 transition-colors">
+              </div>
+              <div>
+                <label class="block text-[10px] uppercase tracking-[0.2em] text-stone-400 mb-2">Message</label>
+                <textarea required rows="5" placeholder="अपना संदेश यहाँ लिखें..." class="w-full bg-white/5 border border-white/10 rounded-xl px-5 py-3.5 text-white placeholder-stone-600 text-sm focus:outline-none focus:border-savor/50 transition-colors resize-none"></textarea>
+              </div>
+              <button type="submit" class="w-full bg-savor text-stone-900 text-sm font-bold uppercase tracking-wide px-8 py-4 rounded-full hover:scale-[1.02] transition-transform duration-150 shine-effect flex items-center justify-center gap-2">
+                <span class="iconify" data-icon="lucide:send" data-width="16"></span>
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-stone-950 py-16 px-6">
+    <div class="max-w-screen-xl mx-auto">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-8 mb-12">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-white/10 rounded-xl flex items-center justify-center text-white font-bold text-lg font-serif">D</div>
+          <div>
+            <span class="text-sm font-semibold tracking-wide text-white">Digital Marketing</span>
+            <span class="block text-[10px] uppercase tracking-[0.2em] text-stone-500">Project by Anjali Prajapati</span>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+          <a href="mailto:anjaliprajapati13220@gmail.com" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors">
+            <span class="iconify text-white" data-icon="lucide:mail" data-width="18"></span>
+          </a>
+          <a href="#hero" class="w-10 h-10 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center hover:bg-white/10 transition-colors">
+            <span class="iconify text-white" data-icon="lucide:arrow-up" data-width="18"></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="section-divider mb-8"></div>
+
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <p class="text-xs text-stone-500">
+          © 2025 Digital Marketing Project — <strong class="text-stone-400">Anjali Prajapati</strong> | Reg No: <strong class="text-stone-400">1965050</strong>
+        </p>
+        <p class="text-xs text-stone-600">
+          <a href="mailto:anjaliprajapati13220@gmail.com" class="hover:text-stone-400 transition-colors">anjaliprajapati13220@gmail.com</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+
+  <!-- ========== TOAST NOTIFICATION ========== -->
+  <div id="toast" class="toast fixed bottom-8 right-8 bg-green-600 text-white px-6 py-4 rounded-2xl shadow-2xl flex items-center gap-3 z-50">
+    <span class="iconify" data-icon="lucide:check-circle" data-width="20"></span>
+    <span class="text-sm font-medium">Message sent successfully!</span>
+  </div>
+
+
+  <!-- ========== BACK TO TOP ========== -->
+  <button id="backToTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-8 left-8 w-12 h-12 bg-stone-900 text-white rounded-full shadow-2xl flex items-center justify-center opacity-0 translate-y-4 transition-all duration-300 hover:scale-110 z-50">
+    <span class="iconify" data-icon="lucide:chevron-up" data-width="20"></span>
+  </button>
+
+
+  <!-- ========== JAVASCRIPT ========== -->
+  <script>
+    // ===== Reveal on Scroll =====
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ===== Progress Bar Animation =====
+    const progressBars = document.querySelectorAll('.progress-fill');
+    const progressObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.5 });
+    progressBars.forEach(bar => progressObserver.observe(bar));
+
+    // ===== Counter Animation =====
+    const counters = document.querySelectorAll('[data-count]');
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-count'));
+          let current = 0;
+          const increment = target / 60;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              el.textContent = target;
+              clearInterval(timer);
+            } else {
+              el.textContent = Math.floor(current);
+            }
+          }, 30);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    // ===== Mobile Menu =====
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open');
+      if (menuOpen) {
+        bar1.style.transform = 'rotate(45deg) translate(4px, 4px)';
+        bar2.style.opacity = '0';
+        bar3.style.transform = 'rotate(-45deg) translate(4px, -4px)';
+        bar3.style.width = '1.5rem';
+      } else {
+        bar1.style.transform = '';
+        bar2.style.opacity = '1';
+        bar3.style.transform = '';
+        bar3.style.width = '1rem';
+      }
+    });
+
+    function closeMobileMenu() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      bar1.style.transform = '';
+      bar2.style.opacity = '1';
+      bar3.style.transform = '';
+      bar3.style.width = '1rem';
+    }
+
+    // ===== Accordion =====
+    function toggleAccordion(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.accordion-icon');
+      const isOpen = content.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+      document.querySelectorAll('.accordion-icon').forEach(i => i.classList.remove('rotated'));
+
+      if (!isOpen) {
+        content.classList.add('open');
+        icon.classList.add('rotated');
+      }
+    }
+
+    // ===== Back to Top =====
+    const backToTop = document.getElementById('backToTop');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 600) {
+        backToTop.style.opacity = '1';
+        backToTop.style.transform = 'translateY(0)';
+      } else {
+        backToTop.style.opacity = '0';
+        backToTop.style.transform = 'translateY(16px)';
+      }
+    });
+
+    // ===== Contact Form =====
+    function handleSubmit(e) {
+      e.preventDefault();
+      const toast = document.getElementById('toast');
+      toast.classList.add('show');
+      e.target.reset();
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3000);
+    }
+
+    // ===== Nav Background on Scroll =====
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        nav.style.boxShadow = '0 4px 30px rgba(0,0,0,0.08)';
+      } else {
+        nav.style.boxShadow = 'none';
+      }
+    });
+  </script>
+
+</body>
+</html>
